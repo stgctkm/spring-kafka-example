@@ -56,9 +56,15 @@ public class ConsumerConfiguration {
 //              ;
 
   @Bean
-  Consumer<KTable<String, Long>> logger() {
+  Consumer<KTable<String, Long>> systemPrinter() {
     return counts -> counts.toStream()
         .foreach((s, aLong) -> System.out.println("page: " + s + " count: " + aLong));
+  }
+
+  @Bean
+  Consumer<KTable<String, Long>> logger() {
+    return counts -> counts.toStream()
+        .foreach((s, aLong) -> System.out.println("*** page: " + s + " count: " + aLong));
   }
 
 //  @Bean

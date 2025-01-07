@@ -23,13 +23,13 @@ public class RunnerConfiguration {
   }
 
   void kafka(KafkaTemplate<Object, Object> kafkaTemplate) {
-    var pageView = (PageView) random("kafka");
+    var pageView = random("kafka");
     kafkaTemplate.send(PAGE_VIEWS_TOPIC, pageView);
   }
 
   private PageView random(String source) {
 
-    var names = "alice,bob,chalie,delta".split(",");
+    var names = "alice,bob,charlie,delta".split(",");
     var pages = "blog.html,about.html,contact.html,news.html,index.html".split(",");
 
     var random = new Random();
